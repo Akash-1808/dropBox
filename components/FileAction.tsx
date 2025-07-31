@@ -5,11 +5,11 @@ import { Button } from "@heroui/button";
 import type { File as FileType } from "@/lib/db/schema";
 
 interface FileActionsProps {
-  file: any;
+  file: FileType;
   onStar: (id: string) => void;
   onTrash: (id: string) => void;
-  onDelete: (file: any) => void;
-  onDownload: (file: any) => void;
+  onDelete: (file: FileType) => void;
+  onDownload: (file: FileType) => void;
 }
 
 export default function FileActions({

@@ -11,7 +11,7 @@ if(!process.env.DATABASE_URL){
     throw new Error("Database url is not set in .env.local")
 }
 
-const path = require("path")
+
 async function runMigration() {
     
     console.log("Starting database migration...")

@@ -4,7 +4,7 @@ import { auth } from "@clerk/nextjs/server";
 import {eq, and} from "drizzle-orm"
 
 import { NextRequest, NextResponse } from "next/server";
-import {v4 as uuidV4, v4} from "uuid"
+import {v4 as uuidV4} from "uuid"
 
 
 export async function POST(request:NextRequest) {

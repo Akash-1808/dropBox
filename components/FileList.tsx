@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { Folder, Star, Trash, X, ExternalLink } from "lucide-react";
 import {
   Table,
@@ -37,7 +37,7 @@ export default function FileList({
   refreshTrigger = 0,
   onFolderChange,
 }: FileListProps) {
-  const [files, setFiles] = useState<any[]>([]);
+  const [files, setFiles] = useState<FileType[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("all");
   const [currentFolder, setCurrentFolder] = useState<string | null>(null);
@@ -48,10 +48,10 @@ export default function FileList({
   // Modal states
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [emptyTrashModalOpen, setEmptyTrashModalOpen] = useState(false);
-  const [selectedFile, setSelectedFile] = useState<any | null>(null);
+  const [selectedFile, setSelectedFile] = useState<FileType | null>(null);
 
   // Fetch files
-  const fetchFiles = async () => {
+  const fetchFiles = useCallback(async () => {
     setLoading(true);
     try {
       let url = `/api/files?userId=${userId}`;
@@ -71,12 +71,12 @@ export default function FileList({
     } finally {
       setLoading(false);
     }
-  };
+  }, [userId, currentFolder]);
 
   // Fetch files when userId, refreshTrigger, or currentFolder changes
   useEffect(() => {
     fetchFiles();
-  }, [userId, refreshTrigger, currentFolder]);
+  }, [fetchFiles, refreshTrigger]);
 
   // Filter files based on active tab
   const filteredFiles = useMemo(() => {
@@ -224,10 +224,10 @@ export default function FileList({
   };
 
   // Add this function to handle file downloads
-  const handleDownloadFile = async (file: any) => {
+  const handleDownloadFile = async (file: FileType) => {
     try {
       // Show loading toast
-      const loadingToastId = addToast({
+      addToast({
         title: "Preparing Download",
         description: `Getting "${file.name}" ready for download...`,
         color: "primary",
@@ -310,7 +310,7 @@ export default function FileList({
   };
 
   // Function to open image in a new tab with optimized view
-  const openImageViewer = (file: any) => {
+  const openImageViewer = (file: FileType) => {
     if (file.type.startsWith("image/")) {
       // Create an optimized URL with ImageKit transformations for viewing
       // Using higher quality and responsive sizing for better viewing experience
@@ -371,7 +371,7 @@ export default function FileList({
   };
 
   // Handle file or folder click
-  const handleItemClick = (file: any) => {
+  const handleItemClick = (file: FileType) => {
     if (file.isFolder) {
       navigateToFolder(file.id, file.name);
     } else if (file.type.startsWith("image/")) {
@@ -522,7 +522,7 @@ export default function FileList({
                         file={file}
                         onStar={handleStarFile}
                         onTrash={handleTrashFile}
-                        onDelete={(file) => {
+                        onDelete={(file: FileType) => {
                           setSelectedFile(file);
                           setDeleteModalOpen(true);
                         }}

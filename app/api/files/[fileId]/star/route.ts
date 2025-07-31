@@ -20,8 +20,8 @@ export async function PATCH(request:NextRequest,
 
        if(!fileId){
         
-          return NextResponse.json({error:"File id is required"},{
-                status:401})
+          return NextResponse.json({error:"File ID is required"},{
+                status:400})
            
        }
 
@@ -34,24 +34,28 @@ export async function PATCH(request:NextRequest,
 
         if(!file){
         
-          return NextResponse.json({error:"File id is required"},{
-                status:401})
+          return NextResponse.json({error:"File not found"},{
+                status:404})
            
        }
 
-       //toggel the star star
+       //toggle the star status
 
       const updatedFiles = await db.update(files).set({isStarred:!file.isStarred}).where(
         and(eq(files.id,fileId),eq(files.userId,userId))
        ).returning()
 
-       //log the whole updatedFiles
-       console.log(updatedFiles)
        const updatedFile = updatedFiles[0]
        
        return NextResponse.json(updatedFile)
 
     } catch (error) {
-        
+        console.error("Error toggling star status:", error);
+        return NextResponse.json({
+            error: "Internal server error",
+            details: error instanceof Error ? error.message : "Unknown error"
+        }, {
+            status: 500
+        })
     }
 }

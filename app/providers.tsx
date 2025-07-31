@@ -1,6 +1,5 @@
 "use client"
 import type { ThemeProviderProps } from "next-themes"
-import { ThemeProvider as NextThemeProvider} from "next-themes"
 import {ImageKitProvider} from "imagekitio-next"
 import { HeroUIProvider } from "@heroui/system"
 
@@ -24,7 +23,7 @@ export interface ProviderProps{
     }
 
 
-export function Providers({children, themeProps} : ProviderProps){
+export function Providers({children} : ProviderProps){
     return(
         
             <ImageKitProvider authenticator={authenticator}

@@ -15,7 +15,7 @@ export const files = pgTable("files",{
 
     //store information
     fileUrl:text("file_url").notNull(), //url to access file
-    thumnailUrl:text("thumbnail_url"),
+    thumbnailUrl:text("thumbnail_url"),
 
     //Ownership
     userId:text("user_id").notNull(),
@@ -54,5 +54,5 @@ export const FilesRelations = relations(files, ({one,many})=>({
 
 //Type definations
 
-export const File = typeof files.$inferSelect;
-export const NewFile = typeof files.$inferInsert;
+export type File = typeof files.$inferSelect;
+export type NewFile = typeof files.$inferInsert;

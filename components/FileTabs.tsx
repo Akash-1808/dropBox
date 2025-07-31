@@ -8,7 +8,7 @@ import type { File as FileType } from "@/lib/db/schema";
 interface FileTabsProps {
   activeTab: string;
   onTabChange: (key: string) => void;
-  files: any[];
+  files: FileType[];
   starredCount: number;
   trashCount: number;
 }

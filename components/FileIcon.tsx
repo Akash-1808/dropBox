@@ -5,7 +5,7 @@ import { IKImage } from "imagekitio-next";
 import type { File as FileType } from "@/lib/db/schema";
 
 interface FileIconProps {
-  file: any;
+  file: FileType;
 }
 
 export default function FileIcon({ file }: FileIconProps) {

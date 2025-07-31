@@ -6,7 +6,6 @@ import {
   CloudUpload,
   Shield,
   Folder,
-  Image as ImageIcon,
   ArrowRight,
 } from "lucide-react";
 import Navbar from "@/components/NavBar";
@@ -140,7 +139,7 @@ export default function Home() {
                     endContent={<ArrowRight className="h-4 w-4" />}
                     className="rounded-sm"
                   >
-                    Let's Go
+                    Let&apos;s Go
                   </Button>
                 </Link>
               </div>
