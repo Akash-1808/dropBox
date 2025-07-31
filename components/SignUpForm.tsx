@@ -8,7 +8,6 @@ import {z} from "zod"
 import { signUpSchema } from "@/schemas/signUpSchema"
 import React, { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { sign } from "crypto"
 import { useRouter } from "next/navigation"
 
 import { Card, CardBody, CardHeader, CardFooter } from "@heroui/card";

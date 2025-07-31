@@ -1,6 +1,7 @@
 import { Button } from "@heroui/button";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
+import Image from "next/image";
 import { Card, CardBody } from "@heroui/card";
 import {
   CloudUpload,
@@ -68,7 +69,7 @@ export default function Home() {
                 <div className="relative w-64 h-64 md:w-80 md:h-80">
                   <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl"></div>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <img src="/box.png" alt="Box"  />
+                    <Image src="/box.png" alt="Box" width={256} height={256} />
                   </div>
                 </div>
               </div>
