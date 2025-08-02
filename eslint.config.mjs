@@ -13,7 +13,8 @@ const eslintConfig = [
   ...compat.config({extends: ["next/core-web-vitals", "next/typescript"],
     rules: {
       '@next/next/no-page-custom-font': 'off',
-      'react/no-unescaped-entities': 'off',
+      '@next/no-unescaped-entities': 'off',
+      '@next/no-used-vars': 'off',
   }}),
 ];
 
