@@ -14,7 +14,6 @@ const eslintConfig = [
     rules: {
       '@next/next/no-page-custom-font': 'off',
       'react/no-unescaped-entities': 'off',
-      
   }}),
 ];
 

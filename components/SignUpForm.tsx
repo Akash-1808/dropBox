@@ -8,6 +8,7 @@ import {z} from "zod"
 import { signUpSchema } from "@/schemas/signUpSchema"
 import React, { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
+
 import { useRouter } from "next/navigation"
 
 import { Card, CardBody, CardHeader, CardFooter } from "@heroui/card";
@@ -20,7 +21,7 @@ import {
   AlertCircle,
   CheckCircle,
   Eye,
-  EyeOff,
+  EyeOff
 } from "lucide-react";
 import Link from "next/link"
 
@@ -65,11 +66,12 @@ export default function SignUpForm(){
                 strategy:"email_code"
             })
             setVerifying(true)
-        } catch (error:any) {
+        } catch (error: unknown) {
             console.error("Signup error: ",error)
-            setAuthError(
-                error.errors?.[0]?.message || "An error occured during the signup please try again"
-            )
+            const errorMessage = error && typeof error === 'object' && 'errors' in error 
+                ? (error as { errors: { message: string }[] }).errors?.[0]?.message 
+                : "An error occured during the signup please try again"
+            setAuthError(errorMessage || "An error occured during the signup please try again")
         } finally {
             setIsSubmiting(false)
         }
@@ -95,9 +97,12 @@ export default function SignUpForm(){
                 setVerificationError("Verification code not be completed")
             }
 
-        } catch (error:any) {
+        } catch (error: unknown) {
             console.error("Verification incomplete",error)
-           setVerificationError( error.errors?.[0]?.message || "An error occured during the signup please try again")
+            const errorMessage = error && typeof error === 'object' && 'errors' in error 
+                ? (error as { errors: { message: string }[] }).errors?.[0]?.message 
+                : "An error occured during the signup please try again"
+            setVerificationError(errorMessage || "An error occured during the signup please try again")
         }finally{
             setIsSubmiting(false)
         }
@@ -111,7 +116,7 @@ export default function SignUpForm(){
                     Verify Your Email
                 </h1>
                 <p className="text-blue-500 text-center">
-                    We've sent a verification code to your email
+                    We&apos; ve sent a verification code to your email
                 </p>
             </CardHeader>
             <Divider/>
@@ -148,12 +153,12 @@ export default function SignUpForm(){
             </form>
             <div className="mt-6 text-center">
                 <p className="text-sm text-blue-500">
-                    Didn't recieve a code?(" ")
+                    Didn&apos;t receive a code?{" "}
                     <button 
                          onClick={async ()=>{
                         if(signUp){
                         await signUp.prepareEmailAddressVerification({
-                            strategy:"email_code",
+                            strategy:"email_code"
                         })
                     }
                 }}

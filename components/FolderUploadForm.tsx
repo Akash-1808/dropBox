@@ -333,7 +333,7 @@ export default function FileUploadForm({
       >
         <ModalContent>
           <ModalHeader className="flex gap-2 items-center">
-            <FolderPlus className="h-5 w-5 text-primary bg-white" />
+            <FolderPlus className="h-5 w-5 text-primary" />
             <span>New Folder</span>
           </ModalHeader>
           <ModalBody>

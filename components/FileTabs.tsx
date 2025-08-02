@@ -41,8 +41,6 @@ export default function FileTabs({
             <span className="font-medium">All Files</span>
             <Badge
               variant="default"
-              color="default"
-            //   size="sm"
               aria-label={`${files.filter((file) => !file.isTrash).length} files`}
             >
               {files.filter((file) => !file.isTrash).length}
@@ -57,9 +55,7 @@ export default function FileTabs({
             <Star className="h-4 w-4 sm:h-5 sm:w-5" />
             <span className="font-medium">Starred</span>
             <Badge
-              variant="default"
-              color="warning"
-            //   size="sm"
+              variant="secondary"
               aria-label={`${starredCount} starred files`}
             >
               {starredCount}
@@ -74,9 +70,7 @@ export default function FileTabs({
             <Trash className="h-4 w-4 sm:h-5 sm:w-5" />
             <span className="font-medium">Trash</span>
             <Badge
-              variant="outline"
-              color="danger"
-            //   size="sm"
+              variant="destructive"
               aria-label={`${trashCount} files in trash`}
             >
               {trashCount}
