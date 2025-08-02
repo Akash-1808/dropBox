@@ -2,9 +2,9 @@ import { db } from "@/lib/db";
 import { files } from "@/lib/db/schema";
 import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
-export async function PATCH(request: NextRequest){
+export async function PATCH(){
     try {
         const { userId } = await auth();
         if (!userId) {
