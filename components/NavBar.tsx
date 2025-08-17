@@ -129,7 +129,7 @@ export default function Navbar({ user }: NavbarProps) {
 
   return (
     <header
-      className={`bg-blue-50 border-b border-blue-200 sticky top-0 z-50 transition-shadow ${isScrolled ? "shadow-sm" : ""}`}
+      className={` border-b border-blue-200 sticky top-2 m-2 px-4 z-50 rounded-full transition-shadow ${isScrolled ? "shadow-sm border border-blue-300 bg-blue-50" : ""}`}
     >
       <div className="container mx-auto py-3 md:py-4 px-4 md:px-6">
         <div className="flex justify-between items-center">

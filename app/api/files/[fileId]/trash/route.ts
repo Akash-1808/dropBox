@@ -26,7 +26,7 @@ export async function PATCH(request: NextRequest) {
         // Assuming db.update() is a function to update the file in the database
 
         const updatedFile = await db.update(files)
-            .set({ isTrash: true }) // Example update, adjust as needed
+            .set({ isTrash: true }) 
             .where(and(eq(files.id, fileId), eq(files.userId, userId)));
 
         if (!updatedFile) {
