@@ -99,7 +99,7 @@ export default function Home() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-              <Card className="border border-blue-200 bg-blue-50 shadow-sm hover:shadow-md transition-shadow rounded-sm">
+              <Card className="border border-blue-200 bg-blue-50 shadow-sm hover:shadow-md transition-shadow rounded-sm z-20">
                 <CardBody className="p-6 text-center">
                   <CloudUpload className="h-10 md:h-12 w-10 md:w-12 mx-auto mb-4 text-primary " />
                   <h3 className="text-lg md:text-xl font-semibold mb-2 text-blue-900">
@@ -109,7 +109,7 @@ export default function Home() {
                 </CardBody>
               </Card>
 
-              <Card className="border border-blue-200 bg-blue-50 shadow-sm hover:shadow-md transition-shadow rounded-sm">
+              <Card className="border border-blue-200 bg-blue-50 shadow-sm hover:shadow-md transition-shadow rounded-sm z-20">
                 <CardBody className="p-6 text-center">
                   <Folder className="h-10 md:h-12 w-10 md:w-12 mx-auto mb-4 text-primary" />
                   <h3 className="text-lg md:text-xl font-semibold mb-2 text-blue-900">
@@ -121,7 +121,7 @@ export default function Home() {
                 </CardBody>
               </Card>
 
-              <Card className="border border-blue-200 bg-blue-50 shadow-sm hover:shadow-md transition-shadow rounded-sm sm:col-span-2 md:col-span-1 mx-auto sm:mx-0 max-w-md sm:max-w-full">
+              <Card className="border border-blue-200 bg-blue-50 shadow-sm hover:shadow-md transition-shadow rounded-sm sm:col-span-2 md:col-span-1 mx-auto sm:mx-0 max-w-md sm:max-w-full z-20">
                 <CardBody className="p-6 text-center">
                   <Shield className="h-10 md:h-12 w-10 md:w-12 mx-auto mb-4 text-primary" />
                   <h3 className="text-lg md:text-xl font-semibold mb-2 text-blue-900">
