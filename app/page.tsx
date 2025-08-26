@@ -15,7 +15,7 @@ import Navbar from "@/components/NavBar";
 export default function Home() {
   return (
     
-    <div className="min-h-screen flex flex-col bg-blue-50">
+    <div className="min-h-screen flex flex-col ">
       
       
       {/* Use the unified Navbar component */}
@@ -23,11 +23,11 @@ export default function Home() {
 
       {/* Main content */}
       <main className="flex-1 lg:mt-20 flex-col lg:flex-row items-center justify-between min-h-[calc(90vh-6rem)]">
-        <Image  className="absolute top-0 left-0 " src="/gradiant.png" alt="Gradient-img" height={15000} width={10000} />
+        <Image  className="absolute top-0 left-0 -z-20 " src="/gradiant.png" alt="Gradient-img" height={15000} width={10000} />
         {/* Hero section */}
         <section className="py-12 md:py-20 px-4 md:px-6">
           <div className="container mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center px-10">
+            <div className="flex gap-8 md:gap-12 items-center px-10">
               <div className="space-y-6 text-center lg:text-left">
                 <div className="ml-9">
                   <div className="relative w-[95%] sm:w-48 h-10 bg-gradient-to-r from-blue-300 to-blue-700
@@ -46,15 +46,15 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="flex flex-wrap gap-4 pt-4 justify-center lg:justify-start ml-9">
+                <div className="flex flex-wrap gap-4 pt-4 justify-center absolute lg:justify-start ml-9">
                   <SignedOut>
                     <Link href="/sign-up">
-                      <Button size="lg" variant="solid" color="primary" className="rounded-sm">
+                      <Button size="lg" variant="solid" color="primary" className="rounded-sm z-20">
                         Get Started
                       </Button>
                     </Link>
                     <Link href="/sign-in">
-                      <Button size="lg" variant="flat" color="primary" className="rounded-sm">
+                      <Button size="lg" variant="flat" color="primary" className="rounded-sm z-20">
                         Sign In
                       </Button>
                     </Link>
@@ -79,7 +79,7 @@ export default function Home() {
                 
                   
                   
-                    <Spline className="absolute lg:top-0 top-[-20%] bottom-0 sm:left-[-2%] h-full"
+                    <Spline className="absolute lg:top-0 top-[-20%] w-[100%] bottom-0 z-10 sm:left-[-2%] h-full"
         scene="https://prod.spline.design/KCUoUCOE1ZQd1VU9/scene.splinecode" 
       />
                  
@@ -90,7 +90,7 @@ export default function Home() {
         </section>
 
         {/* Features section */}
-        <section className="py-12 md:py-16 px-4 md:px-6 bg-blue-50">
+        <section className="py-12 md:py-16 px-4 md:px-6">
           <div className="container mx-auto">
             <div className="text-center mb-8 md:mb-12">
               <h2 className="text-2xl md:text-3xl font-bold mb-4 text-blue-900">
@@ -137,7 +137,7 @@ export default function Home() {
         </section>
 
         {/* CTA section */}
-        <section className="py-12 md:py-20 px-4 md:px-6 bg-blue-50">
+        <section className="py-12 md:py-20 px-4 md:px-6 ">
           <div className="container mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold mb-4 text-blue-900">
               Ready?
