@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { files } from "@/lib/db/schema";
 import { auth } from "@clerk/nextjs/server";
 import {eq, and} from "drizzle-orm"
@@ -15,9 +15,10 @@ export async function POST(request:NextRequest) {
                 status:401
                })
         }
-        const body = await request.json()
+    const body = await request.json()
+    const db = getDb();
 
-        const {name, userId: bodyUserId, parentId = null} =body
+    const {name, userId: bodyUserId, parentId = null} =body
 
         if(bodyUserId !== userId){
             return NextResponse.json({error:"Unauthorized"},{
@@ -30,8 +31,9 @@ export async function POST(request:NextRequest) {
                 status:400
                })
         }
-        if(parentId){
-          const [parentFolder] =  await db
+                if(parentId){
+                    const db = getDb();
+                    const [parentFolder] =  await db
             .select()
             .from(files)
             .where(

@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { files } from "@/lib/db/schema";
 import { auth } from "@clerk/nextjs/server";
 import { and, eq } from "drizzle-orm";
@@ -22,8 +22,9 @@ export async function DELETE(request: NextRequest) {
             });
         }
 
+        const db = getDb();
+
         // Logic to delete the file from the database
-        // Assuming db is already imported and configured
         const deletedFile = await db
             .delete(files)
             .where(

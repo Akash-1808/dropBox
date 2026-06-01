@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { files } from "@/lib/db/schema";
 import { auth } from "@clerk/nextjs/server";
 import {eq, and, isNull} from "drizzle-orm"
@@ -26,9 +26,10 @@ export  async function GET(request:NextRequest) {
         }
 
 
-        //fetch file from database
+    //fetch file from database
+    const db = getDb();
 
-        let userFiles;
+    let userFiles;
         if(parentId){
             //fetching from specific folder
            userFiles = await db
