@@ -24,17 +24,21 @@ export interface ProviderProps{
 
 
 export function Providers({children} : ProviderProps){
-    return(
-        
-            <ImageKitProvider authenticator={authenticator}
-            publicKey={process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY || ""}
-            urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT || ""}
-            >
-                <HeroUIProvider>
-                     {children}
-                </HeroUIProvider>
-                
-            </ImageKitProvider>
-     
-    )
+    const publicKey = process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY;
+    const urlEndpoint = process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT;
+
+    // If ImageKit keys are not provided, render children without ImageKitProvider.
+    if (!publicKey || !urlEndpoint) {
+        return (
+            <HeroUIProvider>
+                {children}
+            </HeroUIProvider>
+        );
+    }
+
+    return (
+        <ImageKitProvider authenticator={authenticator} publicKey={publicKey} urlEndpoint={urlEndpoint}>
+            <HeroUIProvider>{children}</HeroUIProvider>
+        </ImageKitProvider>
+    );
 }

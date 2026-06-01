@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { files } from "@/lib/db/schema";
 import { auth } from "@clerk/nextjs/server";
 import { and, eq } from "drizzle-orm";
@@ -25,7 +25,9 @@ export async function PATCH(request:NextRequest,
            
        }
 
-      const [file] = await db.select().from(files).where(
+    const db = getDb();
+
+    const [file] = await db.select().from(files).where(
         and(
             eq(files.id , fileId),
             eq(files.userId,userId),

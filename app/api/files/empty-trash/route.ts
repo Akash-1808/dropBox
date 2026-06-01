@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { files } from "@/lib/db/schema";
 import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
@@ -11,8 +11,9 @@ export async function PATCH(){
             return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
         }
 
-        // Empty the trash logic here
-        await db.update(files).set({ isTrash: false }).where(eq(files.userId, userId));
+    // Empty the trash logic here
+    const db = getDb();
+    await db.update(files).set({ isTrash: false }).where(eq(files.userId, userId));
 
         return NextResponse.json({ message: "Trash emptied successfully" });
     } catch (error) {

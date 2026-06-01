@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { files } from "@/lib/db/schema";
 import { auth } from "@clerk/nextjs/server";
 import { and, eq } from "drizzle-orm";
@@ -22,10 +22,11 @@ export async function PATCH(request: NextRequest) {
             });
         }
 
-        // Update file logic here, e.g., updating metadata or restoring from trash
-        // Assuming db.update() is a function to update the file in the database
+    const db = getDb();
 
-        const updatedFile = await db.update(files)
+    // Update file logic here, e.g., updating metadata or restoring from trash
+
+    const updatedFile = await db.update(files)
             .set({ isTrash: true }) 
             .where(and(eq(files.id, fileId), eq(files.userId, userId)));
 

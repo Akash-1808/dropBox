@@ -66,6 +66,20 @@ Before running this project, make sure you have:
    NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT="your-imagekit-url-endpoint"
    ```
 
+### Local setup example
+
+You can copy the example env file shipped with the repo and update values locally:
+
+```bash
+cp .env.local.example .env.local
+# edit .env.local and fill in real values (DATABASE_URL, Clerk keys, ImageKit keys)
+```
+
+If you prefer to only build locally without external services, the app now gracefully
+retries initialization at runtime and allows builds to complete even when some
+environment variables are not present. However, to run the app end-to-end and use
+authentication or uploads, set the values above.
+
 4. **Set up the database**
    ```bash
    # Generate database migrations
