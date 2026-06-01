@@ -144,12 +144,12 @@ export default function Navbar({ user }: NavbarProps) {
             {/* Show these buttons when user is signed out */}
             <SignedOut>
               <Link href="/sign-in">
-                <Button variant="flat" color="primary" className="rounded-sm">
+                <Button variant="flat" color="primary" className="rounded-sm cursor-pointer hover:bg-blue-50">
                   Sign In
                 </Button>
               </Link>
               <Link href="/sign-up">
-                <Button variant="solid" color="primary" className="rounded-sm">
+                <Button variant="solid" color="primary" className="rounded-sm cursor-pointer hover:bg-blue-600">
                   Sign Up
                 </Button>
               </Link>
